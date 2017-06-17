@@ -16,7 +16,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="?android:style/TextAppearance.StatusBar.EventContent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:alwaysDrawnWithCache="false"
+    android:background="@android:color/background_light">
 
     <ImageView
         android:id="@+id/zzz_ph_notification_image"
@@ -38,7 +40,8 @@
         android:contentDescription="@string/zzz_ph_stop"
         android:padding="10dp"
         android:scaleType="center"
-        android:src="@drawable/zzz_ph_bt_stop" />
+        android:src="@drawable/zzz_ph_bt_stop"
+        android:tint="@android:color/black" />
 
     <ImageView
         android:id="@+id/zzz_ph_skip_button"
@@ -50,7 +53,8 @@
         android:contentDescription="@string/zzz_ph_skip"
         android:padding="8dp"
         android:scaleType="center"
-        android:src="@drawable/zzz_ph_bt_skip" />
+        android:src="@drawable/zzz_ph_bt_skip"
+        android:tint="@android:color/black" />
 
     <ImageView
         android:id="@+id/zzz_ph_play_pause_button"
@@ -61,14 +65,15 @@
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription="@string/zzz_ph_toggle_play"
         android:padding="8dp"
-        android:src="@drawable/zzz_ph_bt_pause" />
+        android:src="@drawable/zzz_ph_bt_pause"
+        android:tint="@android:color/black" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_toLeftOf="@id/zzz_ph_play_pause_button"
         android:layout_toRightOf="@id/zzz_ph_notification_image"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/zzz_ph_notification_title"
@@ -82,7 +87,8 @@
             android:focusableInTouchMode="true"
             android:gravity="bottom"
             android:lines="1"
-            android:paddingLeft="8dp" >
+            android:paddingLeft="8dp"
+            android:textColor="@android:color/black">
 
             <requestFocus />
         </TextView>
@@ -94,9 +100,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:layout_weight="1"
-            android:singleLine="true"
             android:lines="1"
-            android:paddingLeft="8dp" />
+            android:paddingLeft="8dp"
+            android:singleLine="true"
+            android:textColor="@android:color/darker_gray" />
     </LinearLayout>
 
 </RelativeLayout>

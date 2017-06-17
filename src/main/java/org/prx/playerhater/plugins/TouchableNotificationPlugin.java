@@ -167,12 +167,23 @@ public class TouchableNotificationPlugin extends NotificationPlugin {
     }
 
     protected Notification.Builder getNotificationBuilder() {
-        return new Notification.Builder(getContext()).setAutoCancel(false)
-                .setSmallIcon(R.drawable.zzz_ph_ic_notification)
-                .setTicker("Playing: " + mNotificationTitle)
-                .setContent(getNotificationView())
-                .setContentIntent(mContentIntent).setOngoing(true).setWhen(0)
-                .setOnlyAlertOnce(true);
+        //Added Support for Android O notification channels.
+        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
+            return new Notification.Builder(getContext(), PRIMARY_CHANNEL).setAutoCancel(false)
+                    .setSmallIcon(R.drawable.zzz_ph_ic_notification)
+                    .setTicker("Playing: " + mNotificationTitle)
+                    .setContent(getNotificationView())
+                    .setContentIntent(mContentIntent).setOngoing(true).setWhen(0)
+                    .setOnlyAlertOnce(true);
+        }
+        else{
+            return new Notification.Builder(getContext()).setAutoCancel(false)
+                    .setSmallIcon(R.drawable.zzz_ph_ic_notification)
+                    .setTicker("Playing: " + mNotificationTitle)
+                    .setContent(getNotificationView())
+                    .setContentIntent(mContentIntent).setOngoing(true).setWhen(0)
+                    .setOnlyAlertOnce(true);
+        }
     }
 
     protected void setTextViewText(int id, String text) {

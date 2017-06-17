@@ -16,14 +16,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="?android:style/TextAppearance.StatusBar.EventContent"
     android:layout_width="fill_parent"
-    android:layout_height="128dp" >
+    android:layout_height="128dp"
+    android:background="@android:color/background_light">
 
     <ImageView
         android:id="@+id/zzz_ph_notification_image"
         android:layout_width="128dp"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:background="#3333B5E5"
+        android:background="@android:color/background_light"
         android:contentDescription="@string/zzz_ph_album_art"
         android:scaleType="fitCenter" />
 
@@ -31,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_toRightOf="@id/zzz_ph_notification_image"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/zzz_ph_notification_title"
@@ -45,7 +46,8 @@
             android:gravity="bottom"
             android:maxLines="1"
             android:paddingBottom="2dp"
-            android:singleLine="true" >
+            android:singleLine="true"
+            android:textColor="@android:color/black">
 
             <requestFocus />
         </TextView>
@@ -74,7 +76,7 @@
             android:divider="?android:attr/listDivider"
             android:dividerPadding="12dp"
             android:orientation="horizontal"
-            android:showDividers="middle" >
+            android:showDividers="middle">
 
             <ImageView
                 android:id="@+id/zzz_ph_back_button"
@@ -86,7 +88,8 @@
                 android:gravity="center"
                 android:padding="6dp"
                 android:scaleType="center"
-                android:src="@drawable/zzz_ph_bt_back" />
+                android:src="@drawable/zzz_ph_bt_back"
+                android:tint="@android:color/black" />
 
             <ImageView
                 android:id="@+id/zzz_ph_play_pause_button"
@@ -98,7 +101,8 @@
                 android:gravity="center"
                 android:padding="6dp"
                 android:scaleType="center"
-                android:src="@drawable/zzz_ph_bt_pause" />
+                android:src="@drawable/zzz_ph_bt_pause"
+                android:tint="@android:color/black" />
 
             <ImageView
                 android:id="@+id/zzz_ph_skip_button"
@@ -110,7 +114,8 @@
                 android:gravity="center"
                 android:padding="6dp"
                 android:scaleType="center"
-                android:src="@drawable/zzz_ph_bt_skip" />
+                android:src="@drawable/zzz_ph_bt_skip"
+                android:tint="@android:color/black" />
         </LinearLayout>
     </LinearLayout>
 
@@ -125,6 +130,7 @@
         android:contentDescription="@string/zzz_ph_stop"
         android:padding="10dp"
         android:scaleType="center"
-        android:src="@drawable/zzz_ph_bt_stop" />
+        android:src="@drawable/zzz_ph_bt_stop"
+        android:tint="@android:color/black" />
 
 </RelativeLayout>

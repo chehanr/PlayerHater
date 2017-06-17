@@ -7,21 +7,27 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.+'
+        classpath 'com.android.tools.build:gradle:3.0.0-alpha3'
     }
 }
 
 signing {
-  sign configurations.archives
+  //sign configurations.archives
 }
 
 android {
-    buildToolsVersion "19.1.0"
-    compileSdkVersion 18
+    buildToolsVersion "26.0.0"
+    compileSdkVersion 26
 
     defaultConfig {
-      proguardFile 'proguard-player-hater.txt'
+      //proguardFile 'proguard-player-hater.txt'
     }
+
+    useLibrary 'org.apache.http.legacy'
+}
+
+configurations {
+    compile.exclude group: "org.apache.httpcomponents", module: "httpclient"
 }
 
 //task packageSources(type: Jar) {
@@ -34,81 +40,81 @@ android {
 //}
 
 uploadArchives {
-  repositories {
-    mavenDeployer {
-      beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots") {
-        authentication(userName: sonatypeUserName, password: sonatypePassword)
-      }
-
-      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-        authentication(userName: sonatypeUserName, password: sonatypePassword)
-      }
-
-      pom.project {
-        version '0.3.7-SNAPSHOT'
-        artifactId 'playerhater'
-        groupId 'org.prx'
-
-        name 'PlayerHater'
-        description 'Android library for playing back longform audio such as music or podcasts with player controls.'
-
-        url 'http://github.com/PRX/PlayerHater'
-
-        scm {
-          url 'https://github.com/PRX/PlayerHater/'
-          connection 'scm:git:git://github.com/PRX/PlayerHater.git'
-          developerConnection 'scm:git:git@github.com:PRX/PlayerHater.git'
-          tag 'HEAD'
-        }
-
-        developers {
-          developer {
-            name 'Chris Rhoden'
-            email 'carhoden@gmail.com'
-            id 'chrisrhoden'
-            url 'http://chrisrhoden.com'
-            timezone '-5'
-            roles {
-              role 'developer'
-            }
-          }
-          developer {
-            name 'Rebecca Nesson'
-            id 'rebeccanesson'
-            email 'rebeccanesson@gmail.com'
-            timezone '-5'
-            roles {
-              role 'developer'
-            }
-          }
-        }
-
-        organization {
-          name 'PRX'
-          url 'http://prx.org'
-        }
-
-        issueManagement {
-          system 'GitHub Issues'
-          url 'https://github.com/PRX/PlayerHater/issues'
-        }
-
-        licenses {
-          license {
-            name 'The Apache Software License, Version 2.0'
-            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-            distribution 'repo'
-          }
-        }
-
-        parent {
-          groupId 'org.sonatype.oss'
-          artifactId 'oss-parent'
-          version 7
-        }
-      }
-    }
-  }
+//  repositories {
+//    mavenDeployer {
+//      beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+//
+//      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots") {
+//        authentication(userName: sonatypeUserName, password: sonatypePassword)
+//      }
+//
+//      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+//        authentication(userName: sonatypeUserName, password: sonatypePassword)
+//      }
+//
+//      pom.project {
+//        version '0.3.7-SNAPSHOT'
+//        artifactId 'playerhater'
+//        groupId 'org.prx'
+//
+//        name 'PlayerHater'
+//        description 'Android library for playing back longform audio such as music or podcasts with player controls.'
+//
+//        url 'http://github.com/PRX/PlayerHater'
+//
+//        scm {
+//          url 'https://github.com/PRX/PlayerHater/'
+//          connection 'scm:git:git://github.com/PRX/PlayerHater.git'
+//          developerConnection 'scm:git:git@github.com:PRX/PlayerHater.git'
+//          tag 'HEAD'
+//        }
+//
+//        developers {
+//          developer {
+//            name 'Chris Rhoden'
+//            email 'carhoden@gmail.com'
+//            id 'chrisrhoden'
+//            url 'http://chrisrhoden.com'
+//            timezone '-5'
+//            roles {
+//              role 'developer'
+//            }
+//          }
+//          developer {
+//            name 'Rebecca Nesson'
+//            id 'rebeccanesson'
+//            email 'rebeccanesson@gmail.com'
+//            timezone '-5'
+//            roles {
+//              role 'developer'
+//            }
+//          }
+//        }
+//
+//        organization {
+//          name 'PRX'
+//          url 'http://prx.org'
+//        }
+//
+//        issueManagement {
+//          system 'GitHub Issues'
+//          url 'https://github.com/PRX/PlayerHater/issues'
+//        }
+//
+//        licenses {
+//          license {
+//            name 'The Apache Software License, Version 2.0'
+//            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//            distribution 'repo'
+//          }
+//        }
+//
+//        parent {
+//          groupId 'org.sonatype.oss'
+//          artifactId 'oss-parent'
+//          version 7
+//        }
+//      }
+//    }
+//  }
 }

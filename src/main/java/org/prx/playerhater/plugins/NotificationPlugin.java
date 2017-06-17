@@ -17,6 +17,7 @@ package org.prx.playerhater.plugins;
 
 import android.annotation.TargetApi;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -40,6 +41,12 @@ public class NotificationPlugin extends AbstractPlugin {
     protected Notification mNotification;
     private boolean mShouldBeVisible;
 
+    public static final String PRIMARY_CHANNEL = "default";
+    public static final String CHANNEL_NAME = "LKRDO";
+    public static final String CHANNEL_DESCRIPTION = "Notification playback controls of the LKRDO app.";
+    public static final int IMPORTANCE = NotificationManager.IMPORTANCE_HIGH;
+    public static final int VISIBILITY = Notification.VISIBILITY_PUBLIC;
+
     public NotificationPlugin() {
     }
 
@@ -62,6 +69,14 @@ public class NotificationPlugin extends AbstractPlugin {
                 | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         mContentIntent = PendingIntent.getActivity(getContext(),
                 NOTIFICATION_NU, resumeActivityIntent, 0);
+
+        //Added Support for Android O notification channels.
+        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
+            NotificationChannel notificationChannel = new NotificationChannel(PRIMARY_CHANNEL, CHANNEL_NAME, IMPORTANCE);
+            notificationChannel.setDescription(CHANNEL_DESCRIPTION);
+            notificationChannel.setLockscreenVisibility(VISIBILITY);
+            mNotificationManager.createNotificationChannel(notificationChannel);
+        }
     }
 
     @Override
@@ -82,8 +97,8 @@ public class NotificationPlugin extends AbstractPlugin {
         } else {
             mNotification.tickerText = "Playing: " + mNotificationTitle;
         }
-        mNotification.setLatestEventInfo(getContext(), mNotificationTitle,
-                mNotificationText, mContentIntent);
+        /*mNotification.setLatestEventInfo(getContext(), mNotificationTitle,
+                mNotificationText, mContentIntent);*/
         return mNotification;
     }
 
